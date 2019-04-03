@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shardingsphere.mapper.OrderMapper">
+
+    <!-- 创建数据库与实体类字段对应关系 -->
+    <resultMap type="com.example.shardingsphere.entity.Order" id="resultOrder">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="price" property="price"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.example.shardingsphere.entity.Order">
+        insert into order(
+                user_id,
+                price
+        ) values(
+                #{userId},
+                #{price}
+        )
+    </insert>
+</mapper>
